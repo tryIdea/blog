@@ -1,33 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
+    <title>try</title>
     <link>https://tryidea.github.io/blog/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <description>Recent content on try</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Mar 2019 16:50:45 +0800</lastBuildDate>
     
 	<atom:link href="https://tryidea.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Linux</title>
-      <link>https://tryidea.github.io/blog/post/linux/</link>
-      <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
-      
-      <guid>https://tryidea.github.io/blog/post/linux/</guid>
-      <description>hello</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://tryidea.github.io/blog/about/</link>
-      <pubDate>Wed, 27 Mar 2019 16:49:42 +0800</pubDate>
-      
-      <guid>https://tryidea.github.io/blog/about/</guid>
-      <description>try everything</description>
-    </item>
     
   </channel>
 </rss>
