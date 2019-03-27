@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on My New Hugo Site</title>
-    <link>http://example.org/post/</link>
+    <link>https://tryidea.github.io/blog/post/</link>
     <description>Recent content in Posts on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Mar 2019 16:50:45 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tryidea.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux</title>
-      <link>http://example.org/post/linux/</link>
+      <link>https://tryidea.github.io/blog/post/linux/</link>
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
-      <guid>http://example.org/post/linux/</guid>
+      <guid>https://tryidea.github.io/blog/post/linux/</guid>
       <description>hello</description>
     </item>
     
