@@ -17,7 +17,9 @@
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
       <guid>https://tryidea.github.io/blog/post/linux/</guid>
-      <description>hello</description>
+      <description>sudoers 文件在哪，怎么修改？ 在&amp;rsquo;/etc/sudoers&amp;rsquo; 中增加&amp;rsquo;debugger ALL=(ALL) ALL&amp;rsquo;
+How to set up EPEL repository on CentOS Set up EPEL on CentOS 7 sudo yum install epel-release For CentOS/RHEL 6.*
+sudo rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm  常用命令  w：当前登陆用户 查看 man readline 中的”Key Bindings”这一节了解 Bash 中默认的组合键 id：用户/组 ID 信息 如果你偏好 vi风格的组合键，可以 set -o vi。 回到上一个工作目录： cd - stat：文件信息 file：确定文件类型 cat /etc/issue : 发行版本信息 cat /proc/version : 正在运行的内核版本  几个特殊的命令  cmatrix aafire sl bb  Linux把用户加入某个组（不退出当前所属组 同时属于多个组） usermod -a -G groupname username</description>
     </item>
     
     <item>
