@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on try</title>
-    <link>https://tryidea.github.io/blog/post/</link>
-    <description>Recent content in Posts on try</description>
+    <title>Linux on try</title>
+    <link>https://tryidea.github.io/blog/categories/linux/</link>
+    <description>Recent content in Linux on try</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Apr 2019 16:35:29 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2019 16:50:45 +0800</lastBuildDate>
     
-	<atom:link href="https://tryidea.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tryidea.github.io/blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Mysql</title>
-      <link>https://tryidea.github.io/blog/post/mysql/</link>
-      <pubDate>Tue, 30 Apr 2019 16:35:29 +0800</pubDate>
-      
-      <guid>https://tryidea.github.io/blog/post/mysql/</guid>
-      <description>启动mysql : mysqld --console  关闭mysql : mysqladmin -u root shutdown  Testing The MySQL Installation : mysqlshow mysqlshow -u root mysql mysqladmin version status proc  Connecting to the MySQL Server : mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb  查看MySQL的当前用户 : SELECT USER(); show global variables like &#39;port&#39;;  查看所有用户 : SELECT user,host,password FROM mysql.user;  增加新用户 : grant ALL PRIVILEGES on *.</description>
-    </item>
     
     <item>
       <title>Linux</title>

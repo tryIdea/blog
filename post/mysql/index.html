@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-language" content="en-us" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    
+    
+    <title>Mysql</title>
+    
+
+
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                anchors.options = {
+                visible: 'hover',
+                placement: 'left',
+                icon: "¶"
+                };
+            anchors.add();
+            })
+        </script>
+        
+        
+
+        
+        <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+        <link href="https://clipboardjs.com/bower_components/primer-css/css/primer.css" rel="stylesheet">
+        
+        
+        
+        
+        
+            <link rel="stylesheet" href="https://tryidea.github.io/blog/css/main.css">
+        
+
+        
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+    
+    
+</head>
+
+
+<body>
+    <script>
+        window.addEventListener("resize", resizeThrottler, false);
+
+        var resizeTimeout;
+        function resizeThrottler() {
+        
+        if ( !resizeTimeout ) {
+            resizeTimeout = setTimeout(function() {
+            resizeTimeout = null;
+            actualResizeHandler();
+        
+            
+            }, 66);
+        }
+        }
+        actualResizeHandler()
+        function actualResizeHandler() {
+                if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent))
+                {
+                    document.body.classList.add('mobile');
+                }else{
+                    document.body.classList.remove('mobile');  
+                }
+    }</script>
+
+    
+    
+
+
+    
+
+<div class="inner" style="position:relative;">
+  
+  <div class="side-btn"><a href="https://tryidea.github.io/blog/" class="back">Home</a></div>
+  
+<div class="blog-post">
+  <h2>Mysql</h2>
+        
+
+<h4 id="启动mysql">启动mysql :</h4>
+
+<pre><code>mysqld --console
+</code></pre>
+
+<h4 id="关闭mysql">关闭mysql :</h4>
+
+<pre><code>mysqladmin -u root shutdown
+</code></pre>
+
+<h4 id="testing-the-mysql-installation">Testing The MySQL Installation :</h4>
+
+<pre><code>mysqlshow
+mysqlshow -u root mysql
+mysqladmin version status proc
+</code></pre>
+
+<h4 id="connecting-to-the-mysql-server">Connecting to the MySQL Server :</h4>
+
+<pre><code>mysql --host=localhost --user=myname --password=mypass mydb
+mysql -h localhost -u myname -pmypass mydb
+mysql -uroot -p mydb
+</code></pre>
+
+<h4 id="查看mysql的当前用户">查看MySQL的当前用户 :</h4>
+
+<pre><code>SELECT USER();
+show global variables like 'port';
+</code></pre>
+
+<h4 id="查看所有用户">查看所有用户 :</h4>
+
+<pre><code>SELECT user,host,password FROM mysql.user;
+</code></pre>
+
+<h4 id="增加新用户">增加新用户 :</h4>
+
+<pre><code>grant ALL PRIVILEGES on *.* to 'envesgo_oa'@'192.168.0.132'
+identified by 'envesgo';
+</code></pre>
+
+<h4 id="授权任何用户访问数据库">授权任何用户访问数据库 :</h4>
+
+<pre><code>grant ALL PRIVILEGES on *.* to 'envesgo_oa'@'%'identified by 'envesgo';
+flush privileges;
+
+select user ,password , host from mysql.user;
+</code></pre>
+
+<h4 id="删除mysql的匿名账户-新添加的用户才起作用">删除mysql的匿名账户，新添加的用户才起作用</h4>
+
+<pre><code>delete from user where user='';
+flush privileges;
+</code></pre>
+
+<h4 id="允许ubuntu下mysql远程连接">允许ubuntu下mysql远程连接</h4>
+
+<h5 id="第一步">第一步：</h5>
+
+<pre><code>vim /etc/mysql/my.cnf
+</code></pre>
+
+<p>找到bind-address = 127.0.0.1
+注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0允许任意IP访问；或者自己指定一个IP地址。</p>
+
+<p>重启 MySQL：</p>
+
+<pre><code>sudo /etc/init.d/mysql restart
+</code></pre>
+
+<h5 id="第二步">第二步：</h5>
+
+<p>授权用户能进行远程连接</p>
+
+<pre><code>grant all privileges on *.* to root@&quot;%&quot; identified by &quot;password&quot; with grant option;
+</code></pre>
+
+<pre><code>flush privileges;
+</code></pre>
+
+<p>第一行命令解释如下，*.*：第一个*代表数据库名；第二个*代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。</p>
+
+<p>第二行命令是刷新权限信息，也即是让我们所作的设置马上生效。</p>
+
+<h4 id="显示表的注释-都有哪些字段">显示表的注释，都有哪些字段</h4>
+
+<pre><code>show create table t_user\G;
+desc t_user;
+show full columns from t_faq_question_detail;
+
+</code></pre>
+
+<h4 id="显示线程数">显示线程数</h4>
+
+<pre><code>show processlist;
+</code></pre>
+
+<h4 id="显示可以show的命令">显示可以show的命令</h4>
+
+<pre><code> show status;
+ show table status
+</code></pre>
+
+<h4 id="当前数据库的状态">当前数据库的状态</h4>
+
+<pre><code>status;
+</code></pre>
+
+<h4 id="更改数据库的主键">更改数据库的主键</h4>
+
+<pre><code>Alter table t_kelude_req change id id int(11);#删除自增长
+Alter table t_kelude_req drop primary key;#删除主建
+</code></pre>
+
+<h5 id="新增主键k3-id">新增主键k3_id</h5>
+
+<pre><code>ALTER TABLE t_kelude_req add COLUMN k3_id int(11) auto_increment COMMENT '主键', add primary key(k3_id);
+</code></pre>
+
+<h4 id="删除重复记录">删除重复记录</h4>
+
+<pre><code>DELETE
+FROM
+	t_kelude_req
+WHERE
+	k3_id IN (
+		SELECT
+			*
+		FROM(
+			SELECT
+				max(k3_id)
+			FROM
+				t_kelude_req
+			GROUP BY
+				id, version_id
+			HAVING
+				count(id) &gt; 1
+	) AS temp
+);
+</code></pre>
+
+<p>###############上边的语句错误</p>
+
+<pre><code>DELETE
+FROM
+	faq_child
+WHERE
+	id NOT IN (
+		SELECT
+			id
+		FROM
+			(
+				SELECT
+					id
+				FROM
+					faq_child
+				GROUP BY
+					child_name
+			) AS temp
+)
+</code></pre>
+
+<p>#################有效率的删除重复数据</p>
+
+<pre><code>DELETE t from t_cc_info as t INNER JOIN (SELECT
+			max(id) id
+		FROM
+			t_cc_info
+		GROUP BY
+			cc_id
+		HAVING
+			count(*) &gt; 1) as ids on (t.id = ids.id);
+</code></pre>
+
+<h4 id="获取数据库中所有表的结构和前三条记录">获取数据库中所有表的结构和前三条记录</h4>
+
+<pre><code>mysqldump -v -uroot -p cloudEyes --where &quot;1=1 limit 3&quot; --lock-all-tables &gt; workorder_limit_3.sql;
+</code></pre>
+
+<h4 id="mysql丢失root密码">mysql丢失root密码</h4>
+
+<p>方法1： 用SET PASSWORD命令</p>
+
+<p>　　</p>
+
+<pre><code>mysql -u root
+
+mysql&gt; SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');
+
+</code></pre>
+
+<p>方法2：用mysqladmin</p>
+
+<p>　　</p>
+
+<pre><code>mysqladmin -u root password &quot;newpass&quot;
+</code></pre>
+
+<p>　　如果root已经设置过密码，采用如下方法
+　　</p>
+
+<pre><code>mysqladmin -u root password oldpass &quot;newpass&quot;
+</code></pre>
+
+<p>方法3： 用UPDATE直接编辑user表</p>
+
+<p>　　</p>
+
+<pre><code>mysql -u root
+
+mysql&gt; use mysql;
+
+mysql&gt; UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
+
+mysql&gt; FLUSH PRIVILEGES;
+</code></pre>
+
+<p>在丢失root密码的时候，可以这样</p>
+
+<p>　　</p>
+
+<pre><code>mysqld_safe --skip-grant-tables&amp;
+
+mysql -u root mysql
+
+mysql&gt; UPDATE user SET password=PASSWORD(&quot;new password&quot;) WHERE user='root';
+
+mysql&gt; FLUSH PRIVILEGES;
+
+</code></pre>
+
+<h4 id="查询缓存">查询缓存</h4>
+
+<pre><code>RESET QUERY CACHE  清空查询缓存 ？
+FLUSH QUERY CACHE
+FLUSH TABLES
+SET SESSION query_cache_type=off
+SELECT SQL_NO_CACHE count(1) from t_work_order;  指定当前语句不缓存
+SELECT SQL_NO_CACHE count(*), now() from t_work_order;
+count(*)   count(id)  count(1)
+</code></pre>
+
+<h4 id="mycli-history-and-search">mycli History and Search</h4>
+
+<pre><code>ctrl+r
+</code></pre>
+
+<h4 id="查看sql的查询计划">查看sql的查询计划</h4>
+
+<pre><code>set profiling=1
+show profiles
+show profile for [all] query $id
+
+explain extended
+show warnings
+</code></pre>
+
+<p>【注：这里显示的单位精确至微秒，精确到微秒。1微秒=10的-6次方秒=0.000001秒】</p>
+
+<h4 id="排除mysql内部缓存对于索引调优的影响-首先在当前会话里即时设置全局缓存">排除mysql内部缓存对于索引调优的影响，首先在当前会话里即时设置全局缓存</h4>
+
+<ul>
+<li>set global query_cache_size=1024*1024*16;     //分配设置缓存大小</li>
+<li>set global query_cache_type=1;                          //0表示OFF，1表示ON</li>
+</ul>
+
+<h4 id="以下情况无法缓存其记录集">以下情况无法缓存其记录集</h4>
+
+<ul>
+<li>查询语句中加了SQL_NO_CACHE参数；</li>
+<li>查询语句中含有获得值的函数，包涵自定义函数，如：CURDATE()、GET_LOCK()、RAND()、CONVERT_TZ等；</li>
+<li>对系统数据库的查询：mysql、information_schema</li>
+<li>查询语句中使用SESSION级别变量或存储过程中的局部变量；</li>
+<li>查询语句中使用了LOCK  IN SHARE MODE、FOR UPDATE的语句</li>
+<li>查询语句中类似SELECT …INTO 导出数据的语句；</li>
+<li>事务隔离级别为：Serializable情况下，所有查询语句都不能缓存；至于什么是事务隔离级别</li>
+<li>对临时表的查询操作；</li>
+<li>存在警告信息的查询语句；</li>
+<li>不涉及任何表或视图的查询语句；</li>
+<li>某用户只有列级别权限的查询语句；
+对于大数据并发访问，几乎没有什么命中率，所以DBA一般都会关闭缓存</li>
+</ul>
+
+<h4 id="创建唯一索引">创建唯一索引</h4>
+
+<pre><code>CREATE UNIQUE INDEX uk_cc_id ON t_cc_info (cc_id)
+</code></pre>
+
+<h4 id="sql常见问题">sql常见问题</h4>
+
+<ul>
+<li>limit分页优化两种方式1、left join 查询  2、将上一页的最大值当成参数作为查询条件</li>
+<li>隐式转换</li>
+<li>函数作用于表字段，索引失效</li>
+<li>MySQL不能利用索引进行混合排序</li>
+</ul>
+
+<h4 id="help-topic">help_topic</h4>
+
+<pre><code>SELECT * from mysql.help_topic;
+</code></pre>
+
+<h4 id="给某一张表添加一个列">给某一张表添加一个列</h4>
+
+<pre><code>alter table app_user add starLevel INT(11) NULL default 6;
+</code></pre>
+
+<h4 id="更改app-activity表中digest的字段-允许为空">更改app_activity表中digest的字段,允许为空</h4>
+
+<pre><code>ALTER TABLE app_activity MODIFY digest VARCHAR(255) null;
+</code></pre>
+
+<h4 id="设置事务隔离级别">设置事务隔离级别</h4>
+
+<pre><code>SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE}
+SELECT @@global.tx_isolation;
+SELECT @@session.tx_isolation;
+SELECT @@tx_isolation;
+</code></pre>
+
+<pre><code>set session transaction isolation level read uncommitted;
+set autocommit=0;
+</code></pre>
+
+<h4 id="发生死锁时-可能需要用到的sql">发生死锁时，可能需要用到的sql</h4>
+
+<ul>
+<li>查看隔离级别</li>
+</ul>
+
+<pre><code>select @@tx_isolation;
+</code></pre>
+
+<ul>
+<li>查看事务是否自动提交</li>
+</ul>
+
+<pre><code>select @@autocommit;
+
+set @@session.autocommit=0;
+set @@global.autocommit=0;
+</code></pre>
+
+<ul>
+<li>查看当前的事务</li>
+</ul>
+
+<pre><code>SELECT * FROM information_schema.INNODB_TRX;
+</code></pre>
+
+<ul>
+<li>查看当前锁定的事务</li>
+</ul>
+
+<pre><code>SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCKS;
+</code></pre>
+
+<ul>
+<li>查看当前等锁的事务</li>
+</ul>
+
+<pre><code>SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS;
+</code></pre>
+
+<ul>
+<li>查询是否锁表</li>
+</ul>
+
+<pre><code>show OPEN TABLES where In_use &gt; 0;
+</code></pre>
+
+  </div>
+
+
+<button id="edit-button" class="icon-button" type="button" title="Fork and edit" aria-label="Fork and edit"
+aria-haspopup="true" aria-expanded="false" aria-controls="edit">
+<i class="fa fa-edit">编辑本文</i>
+</button>
+
+
+
+<script src="https://tryidea.github.io/blog/js/copyCode.js"></script>
+<script src="https://tryidea.github.io/blog/js/tooltips.js"></script>
+
+
+<footer>
+  <hr>
+  <small style="font-size:16px;float:right;margin:0 1rem;">
+    &copy; 2019 <a href="https://github.com/tryIdea">to be a better man!.</a>
+    
+  </small>
+</footer>
+</div> 
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128555056-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-128555056-1');
+</script>
+
+
+
+
+
+
+
+<script>
+        document.getElementById("edit-button").addEventListener("click", function () {
+            var editWindow = window.open("https:\/\/github.com\/tryIdea\/try/edit/master/content/post\/mysql.md");
+        });</script>
+
+    
+
+</body>
+
+</html>
