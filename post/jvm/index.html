@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     
     
-    <title>Linux</title>
+    <title>Jvm</title>
     
 
 
@@ -93,118 +93,76 @@
   <div class="side-btn"><a href="https://tryidea.github.io/blog/" class="back">Home</a></div>
   
 <div class="blog-post">
-  <h2>Linux</h2>
+  <h2>Jvm</h2>
         
 
-<h4 id="sudoers-文件在哪-怎么修改">sudoers 文件在哪，怎么修改？</h4>
+<h4 id="启动tomcat时开启gc日志">启动tomcat时开启gc日志</h4>
 
-<p>在&rsquo;/etc/sudoers&rsquo; 中增加&rsquo;debugger     ALL=(ALL)       ALL&rsquo;</p>
+<p>在catalina.sh里添加如下变量即可</p>
 
-<pre><code>apt-get install sudo
+<pre><code>JAVA_OPTS='-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps'
 </code></pre>
 
-<h4 id="how-to-set-up-epel-repository-on-centos">How to set up EPEL repository on CentOS</h4>
-
-<p>Set up EPEL on CentOS 7 sudo yum install epel-release For CentOS/RHEL 6.*</p>
-
-<pre><code>sudo rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm
+<pre><code>JAVA_OPTS='-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=100 -XX:GCLogFileSize=100K'
 </code></pre>
 
-<h4 id="常用命令">常用命令</h4>
+<h4 id="jvm中哪些flag可以被jinfo动态修改">JVM中哪些flag可以被jinfo动态修改</h4>
 
-<ul>
-<li>w：当前登陆用户</li>
-<li>查看 man readline 中的”Key Bindings”这一节了解 Bash 中默认的组合键</li>
-<li>id：用户/组 ID 信息</li>
-<li>如果你偏好 vi风格的组合键，可以 set -o vi。</li>
-<li>回到上一个工作目录： cd -</li>
-<li>stat：文件信息</li>
-<li>file：确定文件类型</li>
-<li>cat /etc/issue : 发行版本信息</li>
-<li>cat /proc/version : 正在运行的内核版本</li>
-</ul>
-
-<h4 id="几个特殊的命令">几个特殊的命令</h4>
-
-<ul>
-<li>cmatrix</li>
-<li>aafire</li>
-<li>sl</li>
-<li>bb</li>
-</ul>
-
-<h4 id="linux把用户加入某个组-不退出当前所属组-同时属于多个组">Linux把用户加入某个组（不退出当前所属组 同时属于多个组）</h4>
-
-<p>usermod -a -G groupname username</p>
-
-<h4 id="查看某用户所属组">查看某用户所属组</h4>
-
-<p>groups username</p>
-
-<h4 id="想知道你的系统有几种shell-可以通过以下命令查看">想知道你的系统有几种shell，可以通过以下命令查看：</h4>
-
-<p>chsh -l
-cat /etc/shells</p>
-
-<h4 id="查看当前正在使用的shell">查看当前正在使用的shell：</h4>
-
-<ul>
-<li>ps-p $$</li>
-<li>echo $0</li>
-</ul>
-
-<h4 id="设置当前用户使用-zsh">设置当前用户使用 zsh</h4>
-
-<p>chsh -s /bin/zsh。 #重启shell后生效</p>
-
-<h4 id="启动apache2-服务">启动apache2 服务</h4>
-
-<p>Linux系统为Ubuntu
-- /etc/init.d/apache2 start
-- /etc/init.d/apache2 restart
-- /etc/init.d/apache2 stop</p>
-
-<h4 id="后台执行任务-即使关闭窗口">后台执行任务，即使关闭窗口</h4>
-
-<pre><code>nohup sh importCcInfo.sh &gt; /usr/local/apache-tomcat-7.0.63/logs/nohup.out 2&gt;&amp; 1 &amp;
-
-nohup command &gt;/dev/null 2&gt;&amp;1 &amp;
+<pre><code>java -XX:+PrintFlagsFinal -version|grep manageable
 </code></pre>
 
-<h4 id="查看命令行快捷键">查看命令行快捷键</h4>
-
-<p>man readline</p>
-
-<h4 id="查看ascii码表">查看ascii码表</h4>
-
-<p>man ascii</p>
-
-<h4 id="快速定位文件">快速定位文件</h4>
+<h4 id="oom-直接造成内存溢出错误使得程序退出-oom又可以分为以下几种">OOM，直接造成内存溢出错误使得程序退出。OOM又可以分为以下几种：</h4>
 
 <ol>
-<li>updatedb</li>
-<li>locate</li>
+<li>Heap space：堆内存不足</li>
+<li>PermGen space：永久代内存不足</li>
+<li>Native thread：本地线程没有足够内存可分配</li>
 </ol>
 
-<h4 id="查看端口占用-端口是否开放">查看端口占用,端口是否开放</h4>
+<h4 id="查看jvm内存使用状况">查看jvm内存使用状况：</h4>
+
+<pre><code>jmap -heap
+</code></pre>
+
+<h4 id="查看jvm内存存活的对象">查看jvm内存存活的对象：</h4>
+
+<pre><code>jmap -histo:live
+</code></pre>
+
+<h4 id="把heap里所有对象都dump下来-无论对象是死是活">把heap里所有对象都dump下来，无论对象是死是活：</h4>
+
+<pre><code>jmap -dump:format=b,file=xxx.hprof
+</code></pre>
+
+<h4 id="先做一次full-gc-再dump-只包含仍然存活的对象信息">先做一次full GC，再dump，只包含仍然存活的对象信息：</h4>
+
+<pre><code>jmap -dump:format=b,live,file=xxx.hprof
+</code></pre>
+
+<h4 id="频繁gc问题或内存溢出问题定位过程">频繁GC问题或内存溢出问题定位过程</h4>
 
 <ol>
-<li>lsof -i:8088</li>
-<li>lsof -i tcp:8080</li>
-<li>start /min telnet 119.75.216.20 80</li>
+<li>使用jps查看线程ID</li>
+<li>使用jstat -gc 3331 250 20 查看gc情况，一般比较关注PERM区的情况，查看GC的增长情况。</li>
+<li>使用jstat -gccause：额外输出上次GC原因</li>
+<li>使用jmap -dump:format=b,file=heapDump 3331生成堆转储文件</li>
+<li>使用jhat或者可视化工具（Eclipse Memory Analyzer 、IBM HeapAnalyzer）分析堆情况。</li>
+<li>结合代码解决内存溢出或泄露问题。</li>
 </ol>
 
-<h4 id="追加环境变量">追加环境变量</h4>
+<h4 id="死锁问题定位过程">死锁问题定位过程</h4>
 
-<p>echo &ldquo;export PATH=$PATH:/root&rdquo; &gt;&gt; /etc/rc.local</p>
+<ol>
+<li>使用jps查看线程ID</li>
+<li>使用jstack 3331：查看线程情况</li>
+</ol>
 
-<h4 id="获取字符串的md5值">获取字符串的MD5值</h4>
+<h4 id="docker里运行jinfo等命令">docker里运行jinfo等命令</h4>
 
-<p>echo -n &lsquo;-KavlU&rsquo;|md5sum|cut -d &lsquo; &rsquo; -f 1</p>
+<pre><code>docker run --cap-add=SYS_PTRACE -it bc336035e74e  /bin/bash
+</code></pre>
 
-<h4 id="查看指定时间段的日志">查看指定时间段的日志</h4>
-
-<pre><code>sed -n '/2017-04-27 07:[0-9][0-9]:[0-9][0-9]/,/2017-04-27 08:[0-9][0-9]:[0-9][0-9]/p' catalina.out
+<pre><code>docker run --security-opt seccomp:unconfined(不推荐）
 </code></pre>
 
   </div>
@@ -254,7 +212,7 @@ aria-haspopup="true" aria-expanded="false" aria-controls="edit">
 
 <script>
         document.getElementById("edit-button").addEventListener("click", function () {
-            var editWindow = window.open("https:\/\/github.com\/tryIdea\/try/edit/master/content/post\/linux.md");
+            var editWindow = window.open("https:\/\/github.com\/tryIdea\/try/edit/master/content/post\/jvm.md");
         });</script>
 
     
