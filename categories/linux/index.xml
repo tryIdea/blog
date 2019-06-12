@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on try blog</title>
-    <link>http://localhost:1313/categories/linux/</link>
+    <link>https://github.com/tryIdea/blog/categories/linux/</link>
     <description>Recent content in linux on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 27 Mar 2019 16:50:45 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.com/tryIdea/blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux</title>
-      <link>http://localhost:1313/post/linux/</link>
+      <link>https://github.com/tryIdea/blog/post/linux/</link>
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/linux/</guid>
+      <guid>https://github.com/tryIdea/blog/post/linux/</guid>
       <description>sudoers 文件在哪，怎么修改？ 在&amp;rsquo;/etc/sudoers&amp;rsquo; 中增加&amp;rsquo;debugger ALL=(ALL) ALL&amp;rsquo; 1 apt-get install sudo How to set up EPEL repository on CentOS</description>
     </item>
     
