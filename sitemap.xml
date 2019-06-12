@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="https://github.com/tryIdea/blog/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://tryidea.github.io/blog/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://github.com/tryIdea/blog/post/jvm/</loc>
+    <loc>https://tryidea.github.io/blog/post/jvm/</loc>
     <lastmod>2019-06-12T11:43:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/post/mysql/</loc>
+    <loc>https://tryidea.github.io/blog/post/mysql/</loc>
     <lastmod>2019-04-30T17:24:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/post/linux/</loc>
+    <loc>https://tryidea.github.io/blog/post/linux/</loc>
     <lastmod>2019-05-31T16:59:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/about/</loc>
+    <loc>https://tryidea.github.io/blog/about/</loc>
     <lastmod>2019-03-27T17:41:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/categories/</loc>
+    <loc>https://tryidea.github.io/blog/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/post/</loc>
+    <loc>https://tryidea.github.io/blog/post/</loc>
     <lastmod>2019-06-12T11:43:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/tags/</loc>
+    <loc>https://tryidea.github.io/blog/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/tags/linux/</loc>
+    <loc>https://tryidea.github.io/blog/tags/linux/</loc>
     <lastmod>2019-05-31T16:59:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/categories/linux/</loc>
+    <loc>https://tryidea.github.io/blog/categories/linux/</loc>
     <lastmod>2019-05-31T16:59:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://github.com/tryIdea/blog/</loc>
+    <loc>https://tryidea.github.io/blog/</loc>
     <lastmod>2019-06-12T11:43:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

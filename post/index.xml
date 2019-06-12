@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on try blog</title>
-    <link>https://github.com/tryIdea/blog/post/</link>
+    <link>https://tryidea.github.io/blog/post/</link>
     <description>Recent content in Posts on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 31 May 2019 16:11:18 +0800</lastBuildDate>
     
-	<atom:link href="https://github.com/tryIdea/blog/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tryidea.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Jvm</title>
-      <link>https://github.com/tryIdea/blog/post/jvm/</link>
+      <link>https://tryidea.github.io/blog/post/jvm/</link>
       <pubDate>Fri, 31 May 2019 16:11:18 +0800</pubDate>
       
-      <guid>https://github.com/tryIdea/blog/post/jvm/</guid>
+      <guid>https://tryidea.github.io/blog/post/jvm/</guid>
       <description>查看JVM使用的默认的垃圾收集器 1 2 java -XX:+PrintCommandLineFlags -version -XX:+PrintGCDetails -XX:+PrintCommandLineFlags 参数使用方式 1 2 3 -XX:+\&amp;lt;option\&amp;gt; 开启option参数 -XX:-\&amp;lt;option\&amp;gt; 关闭option参数 -XX:\&amp;lt;option\&amp;gt;=\&amp;lt;value\&amp;gt; 将option参数值设置为va</description>
     </item>
     
     <item>
       <title>Mysql</title>
-      <link>https://github.com/tryIdea/blog/post/mysql/</link>
+      <link>https://tryidea.github.io/blog/post/mysql/</link>
       <pubDate>Tue, 30 Apr 2019 16:35:29 +0800</pubDate>
       
-      <guid>https://github.com/tryIdea/blog/post/mysql/</guid>
+      <guid>https://tryidea.github.io/blog/post/mysql/</guid>
       <description>启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My</description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://github.com/tryIdea/blog/post/linux/</link>
+      <link>https://tryidea.github.io/blog/post/linux/</link>
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
-      <guid>https://github.com/tryIdea/blog/post/linux/</guid>
+      <guid>https://tryidea.github.io/blog/post/linux/</guid>
       <description>sudoers 文件在哪，怎么修改？ 在&amp;rsquo;/etc/sudoers&amp;rsquo; 中增加&amp;rsquo;debugger ALL=(ALL) ALL&amp;rsquo; 1 apt-get install sudo How to set up EPEL repository on CentOS</description>
     </item>
     

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on try blog</title>
-    <link>https://github.com/tryIdea/blog/categories/</link>
+    <link>https://tryidea.github.io/blog/categories/</link>
     <description>Recent content in Categories on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
-	<atom:link href="https://github.com/tryIdea/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tryidea.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>linux</title>
-      <link>https://github.com/tryIdea/blog/categories/linux/</link>
+      <link>https://tryidea.github.io/blog/categories/linux/</link>
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
-      <guid>https://github.com/tryIdea/blog/categories/linux/</guid>
+      <guid>https://tryidea.github.io/blog/categories/linux/</guid>
       <description></description>
     </item>
     
