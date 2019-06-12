@@ -1,116 +1,226 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="content-language" content="en-us" />
-    
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    
-    
-    <title>Jvm</title>
-    
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Jvm - try blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-    
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                anchors.options = {
-                visible: 'hover',
-                placement: 'left',
-                icon: "¶"
-                };
-            anchors.add();
-            })
-        </script>
-        
-        
+<meta name="author" content="dufugang" /><meta name="description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&amp;lt;option\&amp;gt; 开启option参数 -XX:-\&amp;lt;option\&amp;gt; 关闭option参数 -XX:\&amp;lt;option\&amp;gt;=\&amp;lt;value\&amp;gt; 将option参数值设置为va" /><meta name="keywords" content="Hugo, theme, even" />
 
-        
-        <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
-        <link href="https://clipboardjs.com/bower_components/primer-css/css/primer.css" rel="stylesheet">
-        
-        
-        
-        
-        
-            <link rel="stylesheet" href="https://tryidea.github.io/blog/css/main.css">
-        
 
-        
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" rel="stylesheet">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    
-    
-    
-    <script>hljs.initHighlightingOnLoad();</script>
 
-    
 
-    
-    
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/jvm/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Jvm" />
+<meta property="og:description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&lt;option\&gt; 开启option参数 -XX:-\&lt;option\&gt; 关闭option参数 -XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为va" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/jvm/" /><meta property="article:published_time" content="2019-05-31T16:11:18&#43;08:00"/>
+<meta property="article:modified_time" content="2019-06-12T11:43:38&#43;08:00"/>
+
+<meta itemprop="name" content="Jvm">
+<meta itemprop="description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&lt;option\&gt; 开启option参数 -XX:-\&lt;option\&gt; 关闭option参数 -XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为va">
+
+
+<meta itemprop="datePublished" content="2019-05-31T16:11:18&#43;08:00" />
+<meta itemprop="dateModified" content="2019-06-12T11:43:38&#43;08:00" />
+<meta itemprop="wordCount" content="601">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jvm"/>
+<meta name="twitter:description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&lt;option\&gt; 开启option参数 -XX:-\&lt;option\&gt; 关闭option参数 -XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为va"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
 </head>
-
-
 <body>
-    <script>
-        window.addEventListener("resize", resizeThrottler, false);
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
 
-        var resizeTimeout;
-        function resizeThrottler() {
-        
-        if ( !resizeTimeout ) {
-            resizeTimeout = setTimeout(function() {
-            resizeTimeout = null;
-            actualResizeHandler();
-        
-            
-            }, 66);
-        }
-        }
-        actualResizeHandler()
-        function actualResizeHandler() {
-                if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent))
-                {
-                    document.body.classList.add('mobile');
-                }else{
-                    document.body.classList.remove('mobile');  
-                }
-    }</script>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
 
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
     
-    
+    <header class="post-header">
+      <h1 class="post-title">Jvm</h1>
 
-
-    
-
-<div class="inner" style="position:relative;">
-  
-  <div class="side-btn"><a href="https://tryidea.github.io/blog/" class="back">Home</a></div>
-  
-<div class="blog-post">
-  <h2>Jvm</h2>
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-31 </span>
         
+          <span class="more-meta"> 约 601 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#查看jvm使用的默认的垃圾收集器">查看JVM使用的默认的垃圾收集器</a></li>
+<li><a href="#参数使用方式">参数使用方式</a></li>
+<li><a href="#查询参数值">查询参数值</a></li>
+<li><a href="#启动tomcat时开启gc日志">启动tomcat时开启gc日志</a></li>
+<li><a href="#jvm中哪些flag可以被jinfo动态修改">JVM中哪些flag可以被jinfo动态修改</a></li>
+<li><a href="#oom-直接造成内存溢出错误使得程序退出-oom又可以分为以下几种">OOM，直接造成内存溢出错误使得程序退出。OOM又可以分为以下几种：</a></li>
+<li><a href="#查看jvm内存使用状况">查看jvm内存使用状况：</a></li>
+<li><a href="#查看jvm内存存活的对象">查看jvm内存存活的对象：</a></li>
+<li><a href="#把heap里所有对象都dump下来-无论对象是死是活">把heap里所有对象都dump下来，无论对象是死是活：</a></li>
+<li><a href="#先做一次full-gc-再dump-只包含仍然存活的对象信息">先做一次full GC，再dump，只包含仍然存活的对象信息：</a></li>
+<li><a href="#频繁gc问题或内存溢出问题定位过程">频繁GC问题或内存溢出问题定位过程</a></li>
+<li><a href="#死锁问题定位过程">死锁问题定位过程</a></li>
+<li><a href="#docker里运行jinfo等命令">docker里运行jinfo等命令</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h4 id="查看jvm使用的默认的垃圾收集器">查看JVM使用的默认的垃圾收集器</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">java -XX:+PrintCommandLineFlags -version
+-XX:+PrintGCDetails  -XX:+PrintCommandLineFlags</pre></td></tr></table>
+</div>
+</div>
+<h4 id="参数使用方式">参数使用方式</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">-XX:+\&lt;option\&gt; 开启option参数
+-XX:-\&lt;option\&gt; 关闭option参数
+-XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为value</pre></td></tr></table>
+</div>
+</div>
+<h4 id="查询参数值">查询参数值</h4>
+
+<p>jinfo -flag MaxDirectMemorySize 21184
+java -XX:+PrintFlagsFinal</p>
 
 <h4 id="启动tomcat时开启gc日志">启动tomcat时开启gc日志</h4>
 
 <p>在catalina.sh里添加如下变量即可</p>
-
-<pre><code>JAVA_OPTS='-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps'
-</code></pre>
-
-<pre><code>JAVA_OPTS='-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=100 -XX:GCLogFileSize=100K'
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">JAVA_OPTS=&#39;-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps&#39;</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">JAVA_OPTS=&#39;-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=100 -XX:GCLogFileSize=100K&#39;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="jvm中哪些flag可以被jinfo动态修改">JVM中哪些flag可以被jinfo动态修改</h4>
-
-<pre><code>java -XX:+PrintFlagsFinal -version|grep manageable
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">java -XX:+PrintFlagsFinal -version|grep manageable</pre></td></tr></table>
+</div>
+</div>
 <h4 id="oom-直接造成内存溢出错误使得程序退出-oom又可以分为以下几种">OOM，直接造成内存溢出错误使得程序退出。OOM又可以分为以下几种：</h4>
 
 <ol>
@@ -120,25 +230,41 @@
 </ol>
 
 <h4 id="查看jvm内存使用状况">查看jvm内存使用状况：</h4>
-
-<pre><code>jmap -heap
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">jmap -heap</pre></td></tr></table>
+</div>
+</div>
 <h4 id="查看jvm内存存活的对象">查看jvm内存存活的对象：</h4>
-
-<pre><code>jmap -histo:live
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">jmap -histo:live</pre></td></tr></table>
+</div>
+</div>
 <h4 id="把heap里所有对象都dump下来-无论对象是死是活">把heap里所有对象都dump下来，无论对象是死是活：</h4>
-
-<pre><code>jmap -dump:format=b,file=xxx.hprof
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">jmap -dump:format=b,file=xxx.hprof</pre></td></tr></table>
+</div>
+</div>
 <h4 id="先做一次full-gc-再dump-只包含仍然存活的对象信息">先做一次full GC，再dump，只包含仍然存活的对象信息：</h4>
-
-<pre><code>jmap -dump:format=b,live,file=xxx.hprof
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">jmap -dump:format=b,live,file=xxx.hprof</pre></td></tr></table>
+</div>
+</div>
 <h4 id="频繁gc问题或内存溢出问题定位过程">频繁GC问题或内存溢出问题定位过程</h4>
 
 <ol>
@@ -158,51 +284,123 @@
 </ol>
 
 <h4 id="docker里运行jinfo等命令">docker里运行jinfo等命令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker run --cap-add=SYS_PTRACE -it bc336035e74e  /bin/bash</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker run --security-opt seccomp:unconfined(不推荐）</pre></td></tr></table>
+</div>
+</div>
+    </div>
 
-<pre><code>docker run --cap-add=SYS_PTRACE -it bc336035e74e  /bin/bash
-</code></pre>
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dufugang</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-06-12
+        <a href="https://github.com/tryIdea/try/commit/e9e0c78f772b2079b8b880155a992ea6e88003b2" title="enve">(e9e0c78)</a>
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/mysql/">
+            <span class="next-text nav-default">Mysql</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
 
-<pre><code>docker run --security-opt seccomp:unconfined(不推荐）
-</code></pre>
+  
 
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:867658127@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
   </div>
 
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dufugang</span>
+  </span>
+</div>
+    </footer>
 
-<button id="edit-button" class="icon-button" type="button" title="Fork and edit" aria-label="Fork and edit"
-aria-haspopup="true" aria-expanded="false" aria-controls="edit">
-<i class="fa fa-edit">编辑本文</i>
-</button>
-
-
-
-<script src="https://tryidea.github.io/blog/js/copyCode.js"></script>
-<script src="https://tryidea.github.io/blog/js/tooltips.js"></script>
-
-
-<footer>
-  <hr>
-  <small style="font-size:16px;float:right;margin:0 1rem;">
-    &copy; 2019 <a href="https://github.com/tryIdea">to be a better man!.</a>
-    
-  </small>
-</footer>
-</div> 
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128555056-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'UA-128555056-1');
-</script>
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 
@@ -210,13 +408,6 @@ aria-haspopup="true" aria-expanded="false" aria-controls="edit">
 
 
 
-<script>
-        document.getElementById("edit-button").addEventListener("click", function () {
-            var editWindow = window.open("https:\/\/github.com\/tryIdea\/try/edit/master/content/post\/jvm.md");
-        });</script>
-
-    
 
 </body>
-
 </html>

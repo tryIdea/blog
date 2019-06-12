@@ -1,223 +1,431 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="content-language" content="en-us" />
-    
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    
-    
-    <title>Mysql</title>
-    
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mysql - try blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-    
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                anchors.options = {
-                visible: 'hover',
-                placement: 'left',
-                icon: "¶"
-                };
-            anchors.add();
-            })
-        </script>
-        
-        
+<meta name="author" content="dufugang" /><meta name="description" content="启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My" /><meta name="keywords" content="Hugo, theme, even" />
 
-        
-        <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
-        <link href="https://clipboardjs.com/bower_components/primer-css/css/primer.css" rel="stylesheet">
-        
-        
-        
-        
-        
-            <link rel="stylesheet" href="https://tryidea.github.io/blog/css/main.css">
-        
 
-        
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" rel="stylesheet">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    
-    
-    
-    <script>hljs.initHighlightingOnLoad();</script>
 
-    
 
-    
-    
+
+
+<meta name="generator" content="Hugo 0.52 with even 4.0.0" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/mysql/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mysql" />
+<meta property="og:description" content="启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/mysql/" /><meta property="article:published_time" content="2019-04-30T16:35:29&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-30T17:24:06&#43;08:00"/>
+
+<meta itemprop="name" content="Mysql">
+<meta itemprop="description" content="启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My">
+
+
+<meta itemprop="datePublished" content="2019-04-30T16:35:29&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-30T17:24:06&#43;08:00" />
+<meta itemprop="wordCount" content="1900">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql"/>
+<meta name="twitter:description" content="启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
 </head>
-
-
 <body>
-    <script>
-        window.addEventListener("resize", resizeThrottler, false);
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
 
-        var resizeTimeout;
-        function resizeThrottler() {
-        
-        if ( !resizeTimeout ) {
-            resizeTimeout = setTimeout(function() {
-            resizeTimeout = null;
-            actualResizeHandler();
-        
-            
-            }, 66);
-        }
-        }
-        actualResizeHandler()
-        function actualResizeHandler() {
-                if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent))
-                {
-                    document.body.classList.add('mobile');
-                }else{
-                    document.body.classList.remove('mobile');  
-                }
-    }</script>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
 
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
     
-    
+    <header class="post-header">
+      <h1 class="post-title">Mysql</h1>
 
-
-    
-
-<div class="inner" style="position:relative;">
-  
-  <div class="side-btn"><a href="https://tryidea.github.io/blog/" class="back">Home</a></div>
-  
-<div class="blog-post">
-  <h2>Mysql</h2>
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-30 </span>
         
+          <span class="more-meta"> 约 1900 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#启动mysql">启动mysql :</a></li>
+<li><a href="#关闭mysql">关闭mysql :</a></li>
+<li><a href="#testing-the-mysql-installation">Testing The MySQL Installation :</a></li>
+<li><a href="#connecting-to-the-mysql-server">Connecting to the MySQL Server :</a></li>
+<li><a href="#查看mysql的当前用户">查看MySQL的当前用户 :</a></li>
+<li><a href="#查看所有用户">查看所有用户 :</a></li>
+<li><a href="#增加新用户">增加新用户 :</a></li>
+<li><a href="#授权任何用户访问数据库">授权任何用户访问数据库 :</a></li>
+<li><a href="#删除mysql的匿名账户-新添加的用户才起作用">删除mysql的匿名账户，新添加的用户才起作用</a></li>
+<li><a href="#允许ubuntu下mysql远程连接">允许ubuntu下mysql远程连接</a>
+<ul>
+<li><a href="#第一步">第一步：</a></li>
+<li><a href="#第二步">第二步：</a></li>
+</ul></li>
+<li><a href="#显示表的注释-都有哪些字段">显示表的注释，都有哪些字段</a></li>
+<li><a href="#显示线程数">显示线程数</a></li>
+<li><a href="#显示可以show的命令">显示可以show的命令</a></li>
+<li><a href="#当前数据库的状态">当前数据库的状态</a></li>
+<li><a href="#更改数据库的主键">更改数据库的主键</a>
+<ul>
+<li><a href="#新增主键k3-id">新增主键k3_id</a></li>
+</ul></li>
+<li><a href="#删除重复记录">删除重复记录</a></li>
+<li><a href="#获取数据库中所有表的结构和前三条记录">获取数据库中所有表的结构和前三条记录</a></li>
+<li><a href="#mysql丢失root密码">mysql丢失root密码</a></li>
+<li><a href="#查询缓存">查询缓存</a></li>
+<li><a href="#mycli-history-and-search">mycli History and Search</a></li>
+<li><a href="#查看sql的查询计划">查看sql的查询计划</a></li>
+<li><a href="#排除mysql内部缓存对于索引调优的影响-首先在当前会话里即时设置全局缓存">排除mysql内部缓存对于索引调优的影响，首先在当前会话里即时设置全局缓存</a></li>
+<li><a href="#以下情况无法缓存其记录集">以下情况无法缓存其记录集</a></li>
+<li><a href="#创建唯一索引">创建唯一索引</a></li>
+<li><a href="#sql常见问题">sql常见问题</a></li>
+<li><a href="#help-topic">help_topic</a></li>
+<li><a href="#给某一张表添加一个列">给某一张表添加一个列</a></li>
+<li><a href="#更改app-activity表中digest的字段-允许为空">更改app_activity表中digest的字段,允许为空</a></li>
+<li><a href="#设置事务隔离级别">设置事务隔离级别</a></li>
+<li><a href="#发生死锁时-可能需要用到的sql">发生死锁时，可能需要用到的sql</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="hint">
+      <p>【注意】最后更新于 <span class="timeago" datetime="2019-04-30T17:24:06" title="April 30, 2019">April 30, 2019</span>，文中内容可能已过时，请谨慎使用。</p>
+    </div>
+  </div>
+    <div class="post-content">
+      
 
 <h4 id="启动mysql">启动mysql :</h4>
-
-<pre><code>mysqld --console
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysqld --console</pre></td></tr></table>
+</div>
+</div>
 <h4 id="关闭mysql">关闭mysql :</h4>
-
-<pre><code>mysqladmin -u root shutdown
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysqladmin -u root shutdown</pre></td></tr></table>
+</div>
+</div>
 <h4 id="testing-the-mysql-installation">Testing The MySQL Installation :</h4>
-
-<pre><code>mysqlshow
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysqlshow
 mysqlshow -u root mysql
-mysqladmin version status proc
-</code></pre>
-
+mysqladmin version status proc</pre></td></tr></table>
+</div>
+</div>
 <h4 id="connecting-to-the-mysql-server">Connecting to the MySQL Server :</h4>
-
-<pre><code>mysql --host=localhost --user=myname --password=mypass mydb
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysql --host=localhost --user=myname --password=mypass mydb
 mysql -h localhost -u myname -pmypass mydb
-mysql -uroot -p mydb
-</code></pre>
-
+mysql -uroot -p mydb</pre></td></tr></table>
+</div>
+</div>
 <h4 id="查看mysql的当前用户">查看MySQL的当前用户 :</h4>
-
-<pre><code>SELECT USER();
-show global variables like 'port';
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SELECT USER();
+show global variables like &#39;port&#39;;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="查看所有用户">查看所有用户 :</h4>
-
-<pre><code>SELECT user,host,password FROM mysql.user;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SELECT user,host,password FROM mysql.user;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="增加新用户">增加新用户 :</h4>
-
-<pre><code>grant ALL PRIVILEGES on *.* to 'envesgo_oa'@'192.168.0.132'
-identified by 'envesgo';
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">grant ALL PRIVILEGES on *.* to &#39;envesgo_oa&#39;@&#39;192.168.0.132&#39;
+identified by &#39;envesgo&#39;;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="授权任何用户访问数据库">授权任何用户访问数据库 :</h4>
-
-<pre><code>grant ALL PRIVILEGES on *.* to 'envesgo_oa'@'%'identified by 'envesgo';
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">grant ALL PRIVILEGES on *.* to &#39;envesgo_oa&#39;@&#39;%&#39;identified by &#39;envesgo&#39;;
 flush privileges;
 
-select user ,password , host from mysql.user;
-</code></pre>
-
+select user ,password , host from mysql.user;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="删除mysql的匿名账户-新添加的用户才起作用">删除mysql的匿名账户，新添加的用户才起作用</h4>
-
-<pre><code>delete from user where user='';
-flush privileges;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">delete from user where user=&#39;&#39;;
+flush privileges;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="允许ubuntu下mysql远程连接">允许ubuntu下mysql远程连接</h4>
 
 <h5 id="第一步">第一步：</h5>
-
-<pre><code>vim /etc/mysql/my.cnf
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">vim /etc/mysql/my.cnf</pre></td></tr></table>
+</div>
+</div>
 <p>找到bind-address = 127.0.0.1
 注释掉这行，如：#bind-address = 127.0.0.1 或者改为： bind-address = 0.0.0.0允许任意IP访问；或者自己指定一个IP地址。</p>
 
 <p>重启 MySQL：</p>
-
-<pre><code>sudo /etc/init.d/mysql restart
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">sudo /etc/init.d/mysql restart</pre></td></tr></table>
+</div>
+</div>
 <h5 id="第二步">第二步：</h5>
 
 <p>授权用户能进行远程连接</p>
-
-<pre><code>grant all privileges on *.* to root@&quot;%&quot; identified by &quot;password&quot; with grant option;
-</code></pre>
-
-<pre><code>flush privileges;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">grant all privileges on *.* to root@&#34;%&#34; identified by &#34;password&#34; with grant option;</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">flush privileges;</pre></td></tr></table>
+</div>
+</div>
 <p>第一行命令解释如下，*.*：第一个*代表数据库名；第二个*代表表名。这里的意思是所有数据库里的所有表都授权给用户。root：授予root账号。“%”：表示授权的用户IP可以指定，这里代表任意的IP地址都能访问MySQL数据库。“password”：分配账号对应的密码，这里密码自己替换成你的mysql root帐号密码。</p>
 
 <p>第二行命令是刷新权限信息，也即是让我们所作的设置马上生效。</p>
 
 <h4 id="显示表的注释-都有哪些字段">显示表的注释，都有哪些字段</h4>
-
-<pre><code>show create table t_user\G;
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">show create table t_user\G;
 desc t_user;
-show full columns from t_faq_question_detail;
-
-</code></pre>
-
+show full columns from t_faq_question_detail;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="显示线程数">显示线程数</h4>
-
-<pre><code>show processlist;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">show processlist;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="显示可以show的命令">显示可以show的命令</h4>
-
-<pre><code> show status;
- show table status
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> show status;
+ show table status</pre></td></tr></table>
+</div>
+</div>
 <h4 id="当前数据库的状态">当前数据库的状态</h4>
-
-<pre><code>status;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">status;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="更改数据库的主键">更改数据库的主键</h4>
-
-<pre><code>Alter table t_kelude_req change id id int(11);#删除自增长
-Alter table t_kelude_req drop primary key;#删除主建
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">Alter table t_kelude_req change id id int(11);#删除自增长
+Alter table t_kelude_req drop primary key;#删除主建</pre></td></tr></table>
+</div>
+</div>
 <h5 id="新增主键k3-id">新增主键k3_id</h5>
-
-<pre><code>ALTER TABLE t_kelude_req add COLUMN k3_id int(11) auto_increment COMMENT '主键', add primary key(k3_id);
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ALTER TABLE t_kelude_req add COLUMN k3_id int(11) auto_increment COMMENT &#39;主键&#39;, add primary key(k3_id);</pre></td></tr></table>
+</div>
+</div>
 <h4 id="删除重复记录">删除重复记录</h4>
-
-<pre><code>DELETE
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">DELETE
 FROM
 	t_kelude_req
 WHERE
@@ -234,12 +442,32 @@ WHERE
 			HAVING
 				count(id) &gt; 1
 	) AS temp
-);
-</code></pre>
-
+);</pre></td></tr></table>
+</div>
+</div>
 <p>###############上边的语句错误</p>
-
-<pre><code>DELETE
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">DELETE
 FROM
 	faq_child
 WHERE
@@ -255,104 +483,174 @@ WHERE
 				GROUP BY
 					child_name
 			) AS temp
-)
-</code></pre>
-
+)</pre></td></tr></table>
+</div>
+</div>
 <p>#################有效率的删除重复数据</p>
-
-<pre><code>DELETE t from t_cc_info as t INNER JOIN (SELECT
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">DELETE t from t_cc_info as t INNER JOIN (SELECT
 			max(id) id
 		FROM
 			t_cc_info
 		GROUP BY
 			cc_id
 		HAVING
-			count(*) &gt; 1) as ids on (t.id = ids.id);
-</code></pre>
-
+			count(*) &gt; 1) as ids on (t.id = ids.id);</pre></td></tr></table>
+</div>
+</div>
 <h4 id="获取数据库中所有表的结构和前三条记录">获取数据库中所有表的结构和前三条记录</h4>
-
-<pre><code>mysqldump -v -uroot -p cloudEyes --where &quot;1=1 limit 3&quot; --lock-all-tables &gt; workorder_limit_3.sql;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysqldump -v -uroot -p cloudEyes --where &#34;1=1 limit 3&#34; --lock-all-tables &gt; workorder_limit_3.sql;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="mysql丢失root密码">mysql丢失root密码</h4>
 
 <p>方法1： 用SET PASSWORD命令</p>
 
 <p>　　</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysql -u root
 
-<pre><code>mysql -u root
-
-mysql&gt; SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');
-
-</code></pre>
-
+mysql&gt; SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;newpass&#39;);</pre></td></tr></table>
+</div>
+</div>
 <p>方法2：用mysqladmin</p>
 
 <p>　　</p>
-
-<pre><code>mysqladmin -u root password &quot;newpass&quot;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysqladmin -u root password &#34;newpass&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>　　如果root已经设置过密码，采用如下方法
 　　</p>
-
-<pre><code>mysqladmin -u root password oldpass &quot;newpass&quot;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysqladmin -u root password oldpass &#34;newpass&#34;</pre></td></tr></table>
+</div>
+</div>
 <p>方法3： 用UPDATE直接编辑user表</p>
 
 <p>　　</p>
-
-<pre><code>mysql -u root
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysql -u root
 
 mysql&gt; use mysql;
 
-mysql&gt; UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root';
+mysql&gt; UPDATE user SET Password = PASSWORD(&#39;newpass&#39;) WHERE user = &#39;root&#39;;
 
-mysql&gt; FLUSH PRIVILEGES;
-</code></pre>
-
+mysql&gt; FLUSH PRIVILEGES;</pre></td></tr></table>
+</div>
+</div>
 <p>在丢失root密码的时候，可以这样</p>
 
 <p>　　</p>
-
-<pre><code>mysqld_safe --skip-grant-tables&amp;
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mysqld_safe --skip-grant-tables&amp;
 
 mysql -u root mysql
 
-mysql&gt; UPDATE user SET password=PASSWORD(&quot;new password&quot;) WHERE user='root';
+mysql&gt; UPDATE user SET password=PASSWORD(&#34;new password&#34;) WHERE user=&#39;root&#39;;
 
-mysql&gt; FLUSH PRIVILEGES;
-
-</code></pre>
-
+mysql&gt; FLUSH PRIVILEGES;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="查询缓存">查询缓存</h4>
-
-<pre><code>RESET QUERY CACHE  清空查询缓存 ？
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">RESET QUERY CACHE  清空查询缓存 ？
 FLUSH QUERY CACHE
 FLUSH TABLES
 SET SESSION query_cache_type=off
 SELECT SQL_NO_CACHE count(1) from t_work_order;  指定当前语句不缓存
 SELECT SQL_NO_CACHE count(*), now() from t_work_order;
-count(*)   count(id)  count(1)
-</code></pre>
-
+count(*)   count(id)  count(1)</pre></td></tr></table>
+</div>
+</div>
 <h4 id="mycli-history-and-search">mycli History and Search</h4>
-
-<pre><code>ctrl+r
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ctrl+r</pre></td></tr></table>
+</div>
+</div>
 <h4 id="查看sql的查询计划">查看sql的查询计划</h4>
-
-<pre><code>set profiling=1
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">set profiling=1
 show profiles
 show profile for [all] query $id
 
 explain extended
-show warnings
-</code></pre>
-
+show warnings</pre></td></tr></table>
+</div>
+</div>
 <p>【注：这里显示的单位精确至微秒，精确到微秒。1微秒=10的-6次方秒=0.000001秒】</p>
 
 <h4 id="排除mysql内部缓存对于索引调优的影响-首先在当前会话里即时设置全局缓存">排除mysql内部缓存对于索引调优的影响，首先在当前会话里即时设置全局缓存</h4>
@@ -380,10 +678,14 @@ show warnings
 </ul>
 
 <h4 id="创建唯一索引">创建唯一索引</h4>
-
-<pre><code>CREATE UNIQUE INDEX uk_cc_id ON t_cc_info (cc_id)
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">CREATE UNIQUE INDEX uk_cc_id ON t_cc_info (cc_id)</pre></td></tr></table>
+</div>
+</div>
 <h4 id="sql常见问题">sql常见问题</h4>
 
 <ul>
@@ -394,117 +696,236 @@ show warnings
 </ul>
 
 <h4 id="help-topic">help_topic</h4>
-
-<pre><code>SELECT * from mysql.help_topic;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SELECT * from mysql.help_topic;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="给某一张表添加一个列">给某一张表添加一个列</h4>
-
-<pre><code>alter table app_user add starLevel INT(11) NULL default 6;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">alter table app_user add starLevel INT(11) NULL default 6;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="更改app-activity表中digest的字段-允许为空">更改app_activity表中digest的字段,允许为空</h4>
-
-<pre><code>ALTER TABLE app_activity MODIFY digest VARCHAR(255) null;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ALTER TABLE app_activity MODIFY digest VARCHAR(255) null;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="设置事务隔离级别">设置事务隔离级别</h4>
-
-<pre><code>SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE}
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL {READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SERIALIZABLE}
 SELECT @@global.tx_isolation;
 SELECT @@session.tx_isolation;
-SELECT @@tx_isolation;
-</code></pre>
-
-<pre><code>set session transaction isolation level read uncommitted;
-set autocommit=0;
-</code></pre>
-
+SELECT @@tx_isolation;</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">set session transaction isolation level read uncommitted;
+set autocommit=0;</pre></td></tr></table>
+</div>
+</div>
 <h4 id="发生死锁时-可能需要用到的sql">发生死锁时，可能需要用到的sql</h4>
 
 <ul>
 <li>查看隔离级别</li>
 </ul>
-
-<pre><code>select @@tx_isolation;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select @@tx_isolation;</pre></td></tr></table>
+</div>
+</div>
 <ul>
 <li>查看事务是否自动提交</li>
 </ul>
-
-<pre><code>select @@autocommit;
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select @@autocommit;
 
 set @@session.autocommit=0;
-set @@global.autocommit=0;
-</code></pre>
-
+set @@global.autocommit=0;</pre></td></tr></table>
+</div>
+</div>
 <ul>
 <li>查看当前的事务</li>
 </ul>
-
-<pre><code>SELECT * FROM information_schema.INNODB_TRX;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SELECT * FROM information_schema.INNODB_TRX;</pre></td></tr></table>
+</div>
+</div>
 <ul>
 <li>查看当前锁定的事务</li>
 </ul>
-
-<pre><code>SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCKS;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCKS;</pre></td></tr></table>
+</div>
+</div>
 <ul>
 <li>查看当前等锁的事务</li>
 </ul>
-
-<pre><code>SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS;
-</code></pre>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">SELECT * FROM INFORMATION_SCHEMA.INNODB_LOCK_WAITS;</pre></td></tr></table>
+</div>
+</div>
 <ul>
 <li>查询是否锁表</li>
 </ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">show OPEN TABLES where In_use &gt; 0;</pre></td></tr></table>
+</div>
+</div>
+    </div>
 
-<pre><code>show OPEN TABLES where In_use &gt; 0;
-</code></pre>
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dufugang</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-04-30
+        <a href="https://github.com/tryIdea/try/commit/828a4d8f3192707cfdecac6b40e5c7821d693a3d" title="mysql">(828a4d8)</a>
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/jvm/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Jvm</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/linux/">
+            <span class="next-text nav-default">Linux</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
 
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:867658127@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
   </div>
 
+  <span class="copyright-year">
+    &copy; 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dufugang</span>
+  </span>
+</div>
+    </footer>
 
-<button id="edit-button" class="icon-button" type="button" title="Fork and edit" aria-label="Fork and edit"
-aria-haspopup="true" aria-expanded="false" aria-controls="edit">
-<i class="fa fa-edit">编辑本文</i>
-</button>
-
-
-
-<script src="https://tryidea.github.io/blog/js/copyCode.js"></script>
-<script src="https://tryidea.github.io/blog/js/tooltips.js"></script>
-
-
-<footer>
-  <hr>
-  <small style="font-size:16px;float:right;margin:0 1rem;">
-    &copy; 2019 <a href="https://github.com/tryIdea">to be a better man!.</a>
-    
-  </small>
-</footer>
-</div> 
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128555056-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'UA-128555056-1');
-</script>
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
 
 
@@ -512,13 +933,6 @@ aria-haspopup="true" aria-expanded="false" aria-controls="edit">
 
 
 
-<script>
-        document.getElementById("edit-button").addEventListener("click", function () {
-            var editWindow = window.open("https:\/\/github.com\/tryIdea\/try/edit/master/content/post\/mysql.md");
-        });</script>
-
-    
 
 </body>
-
 </html>

@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on try</title>
-    <link>https://tryidea.github.io/blog/post/</link>
-    <description>Recent content in Posts on try</description>
+    <title>Posts on try blog</title>
+    <link>http://localhost:1313/post/</link>
+    <description>Recent content in Posts on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <lastBuildDate>Fri, 31 May 2019 16:11:18 +0800</lastBuildDate>
     
-	<atom:link href="https://tryidea.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Jvm</title>
-      <link>https://tryidea.github.io/blog/post/jvm/</link>
+      <link>http://localhost:1313/post/jvm/</link>
       <pubDate>Fri, 31 May 2019 16:11:18 +0800</pubDate>
       
-      <guid>https://tryidea.github.io/blog/post/jvm/</guid>
-      <description> 启动tomcat时开启gc日志 在catalina.sh里添加如下变量即可
-JAVA_OPTS=&#39;-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps&#39;  JAVA_OPTS=&#39;-verbose:gc -Xloggc:/home/ubuntu/logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=100 -XX:GCLogFileSize=100K&#39;  JVM中哪些flag可以被jinfo动态修改 java -XX:+PrintFlagsFinal -version|grep manageable  OOM，直接造成内存溢出错误使得程序退出。OOM又可以分为以下几种：  Heap space：堆内存不足 PermGen space：永久代内存不足 Native thread：本地线程没有足够内存可分配  查看jvm内存使用状况： jmap -heap  查看jvm内存存活的对象： jmap -histo:live  把heap里所有对象都dump下来，无论对象是死是活： jmap -dump:format=b,file=xxx.hprof  先做一次full GC，再dump，只包含仍然存活的对象信息： jmap -dump:format=b,live,file=xxx.hprof  频繁GC问题或内存溢出问题定位过程  使用jps查看线程ID 使用jstat -gc 3331 250 20 查看gc情况，一般比较关注PERM区的情况，查看GC的增长情况。 使用jstat -gccause：额外输出上次GC原因 使用jmap -dump:format=b,file=heapDump 3331生成堆转储文件 使用jhat或者可视化工具（Eclipse Memory Analyzer 、IBM HeapAnalyzer）分析堆情况。 结合代码解决内存溢出或泄露问题。  死锁问题定位过程  使用jps查看线程ID 使用jstack 3331：查看线程情况  docker里运行jinfo等命令 docker run --cap-add=SYS_PTRACE -it bc336035e74e /bin/bash  docker run --security-opt seccomp:unconfined(不推荐）  </description>
+      <guid>http://localhost:1313/post/jvm/</guid>
+      <description>查看JVM使用的默认的垃圾收集器 1 2 java -XX:+PrintCommandLineFlags -version -XX:+PrintGCDetails -XX:+PrintCommandLineFlags 参数使用方式 1 2 3 -XX:+\&amp;lt;option\&amp;gt; 开启option参数 -XX:-\&amp;lt;option\&amp;gt; 关闭option参数 -XX:\&amp;lt;option\&amp;gt;=\&amp;lt;value\&amp;gt; 将option参数值设置为va</description>
     </item>
     
     <item>
       <title>Mysql</title>
-      <link>https://tryidea.github.io/blog/post/mysql/</link>
+      <link>http://localhost:1313/post/mysql/</link>
       <pubDate>Tue, 30 Apr 2019 16:35:29 +0800</pubDate>
       
-      <guid>https://tryidea.github.io/blog/post/mysql/</guid>
-      <description>启动mysql : mysqld --console  关闭mysql : mysqladmin -u root shutdown  Testing The MySQL Installation : mysqlshow mysqlshow -u root mysql mysqladmin version status proc  Connecting to the MySQL Server : mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb  查看MySQL的当前用户 : SELECT USER(); show global variables like &#39;port&#39;;  查看所有用户 : SELECT user,host,password FROM mysql.user;  增加新用户 : grant ALL PRIVILEGES on *.</description>
+      <guid>http://localhost:1313/post/mysql/</guid>
+      <description>启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My</description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://tryidea.github.io/blog/post/linux/</link>
+      <link>http://localhost:1313/post/linux/</link>
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
-      <guid>https://tryidea.github.io/blog/post/linux/</guid>
-      <description>sudoers 文件在哪，怎么修改？ 在&amp;rsquo;/etc/sudoers&amp;rsquo; 中增加&amp;rsquo;debugger ALL=(ALL) ALL&amp;rsquo;
-apt-get install sudo  How to set up EPEL repository on CentOS Set up EPEL on CentOS 7 sudo yum install epel-release For CentOS/RHEL 6.*
-sudo rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm  常用命令  w：当前登陆用户 查看 man readline 中的”Key Bindings”这一节了解 Bash 中默认的组合键 id：用户/组 ID 信息 如果你偏好 vi风格的组合键，可以 set -o vi。 回到上一个工作目录： cd - stat：文件信息 file：确定文件类型 cat /etc/issue : 发行版本信息 cat /proc/version : 正在运行的内核版本  几个特殊的命令  cmatrix aafire sl bb  Linux把用户加入某个组（不退出当前所属组 同时属于多个组） usermod -a -G groupname username</description>
+      <guid>http://localhost:1313/post/linux/</guid>
+      <description>sudoers 文件在哪，怎么修改？ 在&amp;rsquo;/etc/sudoers&amp;rsquo; 中增加&amp;rsquo;debugger ALL=(ALL) ALL&amp;rsquo; 1 apt-get install sudo How to set up EPEL repository on CentOS</description>
     </item>
     
   </channel>

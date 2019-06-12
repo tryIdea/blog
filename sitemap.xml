@@ -1,59 +1,72 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml-stylesheet type="text/xsl" href="http://localhost:1313/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tryidea.github.io/blog/post/jvm/</loc>
-    <lastmod>2019-05-31T16:11:18+08:00</lastmod>
+    <loc>http://localhost:1313/post/jvm/</loc>
+    <lastmod>2019-06-12T11:43:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/post/mysql/</loc>
-    <lastmod>2019-04-30T16:35:29+08:00</lastmod>
+    <loc>http://localhost:1313/post/mysql/</loc>
+    <lastmod>2019-04-30T17:24:06+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/post/linux/</loc>
-    <lastmod>2019-03-27T16:50:45+08:00</lastmod>
+    <loc>http://localhost:1313/post/linux/</loc>
+    <lastmod>2019-05-31T16:59:47+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/about/</loc>
-    <lastmod>2019-03-27T16:49:42+08:00</lastmod>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2019-03-27T17:41:20+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/tags/linux/</loc>
-    <lastmod>2019-03-27T16:50:45+08:00</lastmod>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2019-06-12T11:43:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/categories/linux/</loc>
-    <lastmod>2019-03-27T16:50:45+08:00</lastmod>
+    <loc>http://localhost:1313/tags/</loc>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/post/</loc>
-    <lastmod>2019-05-31T16:11:18+08:00</lastmod>
+    <loc>http://localhost:1313/tags/linux/</loc>
+    <lastmod>2019-05-31T16:59:47+08:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/tags/</loc>
-    <lastmod>2019-03-27T16:50:45+08:00</lastmod>
+    <loc>http://localhost:1313/categories/linux/</loc>
+    <lastmod>2019-05-31T16:59:47+08:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tryidea.github.io/blog/</loc>
-    <lastmod>2019-05-31T16:11:18+08:00</lastmod>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2019-06-12T11:43:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   

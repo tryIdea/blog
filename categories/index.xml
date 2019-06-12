@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on try</title>
-    <link>https://tryidea.github.io/blog/categories/</link>
-    <description>Recent content in Categories on try</description>
+    <title>Categories on try blog</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     
-	<atom:link href="https://tryidea.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Linux</title>
-      <link>https://tryidea.github.io/blog/categories/linux/</link>
+      <title>linux</title>
+      <link>http://localhost:1313/categories/linux/</link>
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
-      <guid>https://tryidea.github.io/blog/categories/linux/</guid>
+      <guid>http://localhost:1313/categories/linux/</guid>
       <description></description>
     </item>
     

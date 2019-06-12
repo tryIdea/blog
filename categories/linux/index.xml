@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on try</title>
-    <link>https://tryidea.github.io/blog/categories/linux/</link>
-    <description>Recent content in Linux on try</description>
+    <title>linux on try blog</title>
+    <link>http://localhost:1313/categories/linux/</link>
+    <description>Recent content in linux on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <lastBuildDate>Wed, 27 Mar 2019 16:50:45 +0800</lastBuildDate>
     
-	<atom:link href="https://tryidea.github.io/blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux</title>
-      <link>https://tryidea.github.io/blog/post/linux/</link>
+      <link>http://localhost:1313/post/linux/</link>
       <pubDate>Wed, 27 Mar 2019 16:50:45 +0800</pubDate>
       
-      <guid>https://tryidea.github.io/blog/post/linux/</guid>
-      <description>sudoers 文件在哪，怎么修改？ 在&amp;rsquo;/etc/sudoers&amp;rsquo; 中增加&amp;rsquo;debugger ALL=(ALL) ALL&amp;rsquo;
-apt-get install sudo  How to set up EPEL repository on CentOS Set up EPEL on CentOS 7 sudo yum install epel-release For CentOS/RHEL 6.*
-sudo rpm -Uvh http://mirrors.kernel.org/fedora-epel/6/i386/epel-release-6-8.noarch.rpm  常用命令  w：当前登陆用户 查看 man readline 中的”Key Bindings”这一节了解 Bash 中默认的组合键 id：用户/组 ID 信息 如果你偏好 vi风格的组合键，可以 set -o vi。 回到上一个工作目录： cd - stat：文件信息 file：确定文件类型 cat /etc/issue : 发行版本信息 cat /proc/version : 正在运行的内核版本  几个特殊的命令  cmatrix aafire sl bb  Linux把用户加入某个组（不退出当前所属组 同时属于多个组） usermod -a -G groupname username</description>
+      <guid>http://localhost:1313/post/linux/</guid>
+      <description>sudoers 文件在哪，怎么修改？ 在&amp;rsquo;/etc/sudoers&amp;rsquo; 中增加&amp;rsquo;debugger ALL=(ALL) ALL&amp;rsquo; 1 apt-get install sudo How to set up EPEL repository on CentOS</description>
     </item>
     
   </channel>
