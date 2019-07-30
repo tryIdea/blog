@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="dufugang" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="dufugang" /><meta name="description" content="dufugang blog" /><meta name="keywords" content="Hugo, blog, even" />
 
 
 
@@ -41,17 +41,17 @@
 
 
 <meta property="og:title" content="try blog" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:description" content="dufugang blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tryidea.github.io/blog/" />
-<meta property="og:updated_time" content="2019-05-31T16:11:18&#43;08:00"/>
+<meta property="og:updated_time" content="2019-06-12T17:23:03&#43;08:00"/>
 
 <meta itemprop="name" content="try blog">
-<meta itemprop="description" content="Hugo theme even example site.">
+<meta itemprop="description" content="dufugang blog">
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="try blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:description" content="dufugang blog"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -66,7 +66,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/blog/" class="logo">Even</a>
+    <a href="/blog/" class="logo">try</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -90,7 +90,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/blog/" class="logo">Even</a>
+  <a href="/blog/" class="logo">try</a>
 </div>
 
 <nav class="site-navbar">
@@ -114,18 +114,39 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/blog/post/docker/">Docker</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-12 </span>
+      
+        <span class="more-meta"> 约 80 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      使用docker连接redis 1 2 3 docker pull redis docker run -it --name yunli-redis -d -p6379:6379 redis docker exec -it yunli-redis /bin/bash -c &#34;cd /usr/redis/src &amp;&amp; ./redis-cli -h ip&#34; 使用docker连接mysql 1 2 docker run -it --name yunli-sql -d -p3306:3306 -e MYSQL_ROOT_PASSWORD=root alisql/alisql docker exec
+    </div>
+    <div class="read-more">
+      <a href="/blog/post/docker/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/blog/post/jvm/">Jvm</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2019-05-31 </span>
       
-        <span class="more-meta"> 约 601 字 </span>
+        <span class="more-meta"> 约 763 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      查看JVM使用的默认的垃圾收集器 1 2 java -XX:+PrintCommandLineFlags -version -XX:+PrintGCDetails -XX:+PrintCommandLineFlags 参数使用方式 1 2 3 -XX:+\&lt;option\&gt; 开启option参数 -XX:-\&lt;option\&gt; 关闭option参数 -XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为va
+      参数 标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容; 1 java 非标准参数（-X），默认jvm实现这些参数的功能，但是并不保
     </div>
     <div class="read-more">
       <a href="/blog/post/jvm/" class="read-more-link">阅读更多</a>
@@ -192,20 +213,8 @@
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="mailto:867658127@qq.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
-      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
-      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+      <a href="https://github.com/tryIdea" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/dfg09/home" class="iconfont icon-weibo" title="weibo"></a>
   <a href="https://tryidea.github.io/blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -244,13 +253,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
 <script type="text/javascript" src="/blog/dist/even.26188efa.min.js"></script>
 
 

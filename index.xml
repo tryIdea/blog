@@ -6,10 +6,19 @@
     <description>Recent content on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 31 May 2019 16:11:18 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Jun 2019 17:23:03 +0800</lastBuildDate>
     
 	<atom:link href="https://tryidea.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker</title>
+      <link>https://tryidea.github.io/blog/post/docker/</link>
+      <pubDate>Wed, 12 Jun 2019 17:23:03 +0800</pubDate>
+      
+      <guid>https://tryidea.github.io/blog/post/docker/</guid>
+      <description>使用docker连接redis 1 2 3 docker pull redis docker run -it --name yunli-redis -d -p6379:6379 redis docker exec -it yunli-redis /bin/bash -c &amp;#34;cd /usr/redis/src &amp;amp;&amp;amp; ./redis-cli -h ip&amp;#34; 使用docker连接mysql 1 2 docker run -it --name yunli-sql -d -p3306:3306 -e MYSQL_ROOT_PASSWORD=root alisql/alisql docker exec</description>
+    </item>
     
     <item>
       <title>Jvm</title>
@@ -17,7 +26,7 @@
       <pubDate>Fri, 31 May 2019 16:11:18 +0800</pubDate>
       
       <guid>https://tryidea.github.io/blog/post/jvm/</guid>
-      <description>查看JVM使用的默认的垃圾收集器 1 2 java -XX:+PrintCommandLineFlags -version -XX:+PrintGCDetails -XX:+PrintCommandLineFlags 参数使用方式 1 2 3 -XX:+\&amp;lt;option\&amp;gt; 开启option参数 -XX:-\&amp;lt;option\&amp;gt; 关闭option参数 -XX:\&amp;lt;option\&amp;gt;=\&amp;lt;value\&amp;gt; 将option参数值设置为va</description>
+      <description>参数 标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容; 1 java 非标准参数（-X），默认jvm实现这些参数的功能，但是并不保</description>
     </item>
     
     <item>

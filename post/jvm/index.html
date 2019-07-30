@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="dufugang" /><meta name="description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&amp;lt;option\&amp;gt; 开启option参数 -XX:-\&amp;lt;option\&amp;gt; 关闭option参数 -XX:\&amp;lt;option\&amp;gt;=\&amp;lt;value\&amp;gt; 将option参数值设置为va" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="dufugang" /><meta name="description" content="参数 标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容; 1 java 非标准参数（-X），默认jvm实现这些参数的功能，但是并不保" /><meta name="keywords" content="Hugo, blog, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="Jvm" />
-<meta property="og:description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&lt;option\&gt; 开启option参数 -XX:-\&lt;option\&gt; 关闭option参数 -XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为va" />
+<meta property="og:description" content="参数 标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容; 1 java 非标准参数（-X），默认jvm实现这些参数的功能，但是并不保" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tryidea.github.io/blog/post/jvm/" /><meta property="article:published_time" content="2019-05-31T16:11:18&#43;08:00"/>
 <meta property="article:modified_time" content="2019-06-12T11:43:38&#43;08:00"/>
 
 <meta itemprop="name" content="Jvm">
-<meta itemprop="description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&lt;option\&gt; 开启option参数 -XX:-\&lt;option\&gt; 关闭option参数 -XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为va">
+<meta itemprop="description" content="参数 标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容; 1 java 非标准参数（-X），默认jvm实现这些参数的功能，但是并不保">
 
 
 <meta itemprop="datePublished" content="2019-05-31T16:11:18&#43;08:00" />
 <meta itemprop="dateModified" content="2019-06-12T11:43:38&#43;08:00" />
-<meta itemprop="wordCount" content="601">
+<meta itemprop="wordCount" content="763">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jvm"/>
-<meta name="twitter:description" content="查看JVM使用的默认的垃圾收集器 1 2 java -XX:&#43;PrintCommandLineFlags -version -XX:&#43;PrintGCDetails -XX:&#43;PrintCommandLineFlags 参数使用方式 1 2 3 -XX:&#43;\&lt;option\&gt; 开启option参数 -XX:-\&lt;option\&gt; 关闭option参数 -XX:\&lt;option\&gt;=\&lt;value\&gt; 将option参数值设置为va"/>
+<meta name="twitter:description" content="参数 标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容; 1 java 非标准参数（-X），默认jvm实现这些参数的功能，但是并不保"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -72,7 +72,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/blog/" class="logo">Even</a>
+    <a href="/blog/" class="logo">try</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -96,7 +96,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/blog/" class="logo">Even</a>
+  <a href="/blog/" class="logo">try</a>
 </div>
 
 <nav class="site-navbar">
@@ -125,7 +125,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-05-31 </span>
         
-          <span class="more-meta"> 约 601 字 </span>
+          <span class="more-meta"> 约 763 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/blog/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,6 +142,7 @@
 <ul>
 <li>
 <ul>
+<li><a href="#参数">参数</a></li>
 <li><a href="#查看jvm使用的默认的垃圾收集器">查看JVM使用的默认的垃圾收集器</a></li>
 <li><a href="#参数使用方式">参数使用方式</a></li>
 <li><a href="#查询参数值">查询参数值</a></li>
@@ -165,6 +166,35 @@
     <div class="post-content">
       
 
+<h4 id="参数">参数</h4>
+
+<p>标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">java</pre></td></tr></table>
+</div>
+</div>
+<p>非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">java -X</pre></td></tr></table>
+</div>
+</div>
+<p>非Stable参数（-XX），此类参数各个jvm实现会有所不同，将来可能会随时取消，需要慎重使用（但是，这些参数往往是非常有用的）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">java -XX:+PrintFlagsFinal</pre></td></tr></table>
+</div>
+</div>
 <h4 id="查看jvm使用的默认的垃圾收集器">查看JVM使用的默认的垃圾收集器</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -319,7 +349,11 @@ java -XX:+PrintFlagsFinal</p>
 <footer class="post-footer">
       
       <nav class="post-nav">
-        
+        <a class="prev" href="/blog/post/docker/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Docker</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/blog/post/mysql/">
             <span class="next-text nav-default">Mysql</span>
             <span class="next-text nav-mobile">下一篇</span>
@@ -341,20 +375,8 @@ java -XX:+PrintFlagsFinal</p>
     <footer id="footer" class="footer">
       <div class="social-links">
       <a href="mailto:867658127@qq.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
-      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
-      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+      <a href="https://github.com/tryIdea" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/dfg09/home" class="iconfont icon-weibo" title="weibo"></a>
   <a href="https://tryidea.github.io/blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -393,13 +415,6 @@ java -XX:+PrintFlagsFinal</p>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "zh-cn".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
 <script type="text/javascript" src="/blog/dist/even.26188efa.min.js"></script>
 
 
