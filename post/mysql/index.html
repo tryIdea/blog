@@ -42,15 +42,15 @@
 <meta property="og:description" content="启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tryidea.github.io/blog/post/mysql/" /><meta property="article:published_time" content="2019-04-30T16:35:29&#43;08:00"/>
-<meta property="article:modified_time" content="2019-04-30T17:24:06&#43;08:00"/>
+<meta property="article:modified_time" content="2019-09-26T14:00:11&#43;08:00"/>
 
 <meta itemprop="name" content="Mysql">
 <meta itemprop="description" content="启动mysql : 1 mysqld --console 关闭mysql : 1 mysqladmin -u root shutdown Testing The MySQL Installation : 1 2 3 mysqlshow mysqlshow -u root mysql mysqladmin version status proc Connecting to the MySQL Server : 1 2 3 mysql --host=localhost --user=myname --password=mypass mydb mysql -h localhost -u myname -pmypass mydb mysql -uroot -p mydb 查看My">
 
 
 <meta itemprop="datePublished" content="2019-04-30T16:35:29&#43;08:00" />
-<meta itemprop="dateModified" content="2019-04-30T17:24:06&#43;08:00" />
-<meta itemprop="wordCount" content="1900">
+<meta itemprop="dateModified" content="2019-09-26T14:00:11&#43;08:00" />
+<meta itemprop="wordCount" content="1938">
 
 
 
@@ -125,7 +125,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-04-30 </span>
         
-          <span class="more-meta"> 约 1900 字 </span>
+          <span class="more-meta"> 约 1938 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/blog/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -179,6 +179,7 @@
 <li><a href="#更改app-activity表中digest的字段-允许为空">更改app_activity表中digest的字段,允许为空</a></li>
 <li><a href="#设置事务隔离级别">设置事务隔离级别</a></li>
 <li><a href="#发生死锁时-可能需要用到的sql">发生死锁时，可能需要用到的sql</a></li>
+<li><a href="#导出表结构">导出表结构</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -815,6 +816,21 @@ set @@global.autocommit=0;</pre></td></tr></table>
 <pre class="chroma">show OPEN TABLES where In_use &gt; 0;</pre></td></tr></table>
 </div>
 </div>
+<h4 id="导出表结构">导出表结构</h4>
+
+<p>SELECT
+COLUMN_NAME 数据字典,
+COLUMN_TYPE 类型长度,
+COLUMN_COMMENT 中文名称
+FROM
+INFORMATION_SCHEMA.COLUMNS
+where
+table_schema =&lsquo;call_service&rsquo;
+AND
+table_name = &lsquo;call_account&rsquo;</p>
+
+<p>SHOW FULL FIELDS FROM 表名</p>
+
     </div>
 
     <div class="post-copyright">
@@ -825,8 +841,8 @@ set @@global.autocommit=0;</pre></td></tr></table>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-04-30
-        <a href="https://github.com/tryIdea/try/commit/828a4d8f3192707cfdecac6b40e5c7821d693a3d" title="mysql">(828a4d8)</a>
+        2019-09-26
+        <a href="https://github.com/tryIdea/try/commit/c852801d7000c0cb15df36ee23acb11e13c54900" title="mysql">(c852801)</a>
     </span>
   </p>
   
@@ -884,7 +900,8 @@ set @@global.autocommit=0;</pre></td></tr></table>
 
   <span class="copyright-year">
     &copy; 
-    2019
+    2019 - 
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>

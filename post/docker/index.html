@@ -42,15 +42,15 @@
 <meta property="og:description" content="使用docker连接redis 1 2 3 docker pull redis docker run -it --name yunli-redis -d -p6379:6379 redis docker exec -it yunli-redis /bin/bash -c &#34;cd /usr/redis/src &amp;&amp; ./redis-cli -h ip&#34; 使用docker连接mysql 1 2 docker run -it --name yunli-sql -d -p3306:3306 -e MYSQL_ROOT_PASSWORD=root alisql/alisql docker exec" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tryidea.github.io/blog/post/docker/" /><meta property="article:published_time" content="2019-06-12T17:23:03&#43;08:00"/>
-<meta property="article:modified_time" content="2019-06-12T17:23:03&#43;08:00"/>
+<meta property="article:modified_time" content="2020-08-07T14:53:33&#43;08:00"/>
 
 <meta itemprop="name" content="Docker">
 <meta itemprop="description" content="使用docker连接redis 1 2 3 docker pull redis docker run -it --name yunli-redis -d -p6379:6379 redis docker exec -it yunli-redis /bin/bash -c &#34;cd /usr/redis/src &amp;&amp; ./redis-cli -h ip&#34; 使用docker连接mysql 1 2 docker run -it --name yunli-sql -d -p3306:3306 -e MYSQL_ROOT_PASSWORD=root alisql/alisql docker exec">
 
 
 <meta itemprop="datePublished" content="2019-06-12T17:23:03&#43;08:00" />
-<meta itemprop="dateModified" content="2019-06-12T17:23:03&#43;08:00" />
-<meta itemprop="wordCount" content="80">
+<meta itemprop="dateModified" content="2020-08-07T14:53:33&#43;08:00" />
+<meta itemprop="wordCount" content="238">
 
 
 
@@ -125,7 +125,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-06-12 </span>
         
-          <span class="more-meta"> 约 80 字 </span>
+          <span class="more-meta"> 约 238 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/blog/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,6 +142,8 @@
 <ul>
 <li><a href="#使用docker连接redis">使用docker连接redis</a></li>
 <li><a href="#使用docker连接mysql">使用docker连接mysql</a></li>
+<li><a href="#使用docker导出表结构">使用docker导出表结构</a></li>
+<li><a href="#mysql压力测试">mysql压力测试</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -175,6 +177,62 @@ docker exec -it yunli-redis /bin/bash -c &#34;cd /usr/redis/src &amp;&amp; ./red
 docker exec -it yunli-sql /bin/bash -c &#34;mysql -h ip -u root -p123456&#34;</pre></td></tr></table>
 </div>
 </div>
+<h3 id="使用docker导出表结构">使用docker导出表结构</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker exec -it yunli-sql /bin/bash -c &#34;mysqldump -uroot -proot -hlocalhost -P3306 --databases call_service --no-data&#34; &gt; ./call_service.sql
+docker exec -it yunli-sql /bin/bash -c &#34;mysqldump -uroot -proot -h localhost -P3306 call_service call_voice_model&#34; &gt; ./call_service.sql</pre></td></tr></table>
+</div>
+</div>
+<h3 id="mysql压力测试">mysql压力测试</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">sysbench --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password=root \
+--mysql-db=sbtest --report-interval=10 --time=120 --tables=4 --table-size=10000000 --threads=1 \
+/usr/share/sysbench/oltp_read_write.lua prepare
+
+docker run --rm=true --name=sb-prepare severalnines/sysbench sysbench --db-driver=mysql --oltp-table-size=100000 \
+--oltp-tables-count=24 --threads=1 --mysql-host=192.168.1.30 --mysql-port=3306 --mysql-user=root --mysql-password=root \
+/usr/share/sysbench/tests/include/oltp_legacy/parallel_prepare.lua run
+
+sysbench --mysql-host=192.168.0.26 --mysql-port=3306 --mysql-user=root --mysql-password=root \
+--mysql-db=sbtest --report-interval=10 --time=120 --tables=4 --table-size=10000000 --threads=1 \
+/usr/share/sysbench/oltp_read_write.lua run
+
+docker run --name=sb-run severalnines/sysbench sysbench --db-driver=mysql --report-interval=10 --mysql-table-engine=innodb \
+--oltp-table-size=100000 --oltp-tables-count=24 --threads=64 --time=120 --mysql-host=192.168.1.30 --mysql-port=3306 \
+--mysql-user=root --mysql-password=root /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua run
+
+sysbench --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password=root \
+--mysql-db=sbtest --report-interval=10 --time=120 --tables=4 --table-size=10000000 --threads=1 \
+/usr/share/sysbench/oltp_read_write.lua cleanup</pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -185,8 +243,8 @@ docker exec -it yunli-sql /bin/bash -c &#34;mysql -h ip -u root -p123456&#34;</p
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-06-12
-        
+        2020-08-07
+        <a href="https://github.com/tryIdea/try/commit/1f466f80aea2e26ea59cd7128a7c83b8be8970c5" title="docker">(1f466f8)</a>
     </span>
   </p>
   
@@ -240,7 +298,8 @@ docker exec -it yunli-sql /bin/bash -c &#34;mysql -h ip -u root -p123456&#34;</p
 
   <span class="copyright-year">
     &copy; 
-    2019
+    2019 - 
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
