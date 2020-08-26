@@ -6,10 +6,19 @@
     <description>Recent content on try blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Jun 2019 17:23:03 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2020 11:11:36 +0800</lastBuildDate>
     
 	<atom:link href="https://tryidea.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maven</title>
+      <link>https://tryidea.github.io/blog/post/maven/</link>
+      <pubDate>Wed, 26 Aug 2020 11:11:36 +0800</pubDate>
+      
+      <guid>https://tryidea.github.io/blog/post/maven/</guid>
+      <description>生成骨架命令 1 2 3 4 5 mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=api-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-service-api -Dversion=1.0.0-SNAPSHOT mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=portal-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-portal -Dversion=1.0.0-SNAPSHOT mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=service-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-service -Dversion=1.0.0-SNAPSHOT</description>
+    </item>
     
     <item>
       <title>Docker</title>
