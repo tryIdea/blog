@@ -42,15 +42,15 @@
 <meta property="og:description" content="下载项目依赖jar包的所有源码 mvn dependency:sources mvn dependency:sources -DdownloadSources=true -DdownloadJavadocs=true 查看所有依赖树 mvn dependency:tree mvn dependency:tree -Dverbose -Dincludes=: Maven安装第三方Jar包到本地仓库:maven-install-pl" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tryidea.github.io/blog/post/maven/" /><meta property="article:published_time" content="2020-08-26T11:11:36&#43;08:00"/>
-<meta property="article:modified_time" content="2020-09-03T17:38:00&#43;08:00"/>
+<meta property="article:modified_time" content="2020-09-03T17:41:43&#43;08:00"/>
 
 <meta itemprop="name" content="Maven">
 <meta itemprop="description" content="下载项目依赖jar包的所有源码 mvn dependency:sources mvn dependency:sources -DdownloadSources=true -DdownloadJavadocs=true 查看所有依赖树 mvn dependency:tree mvn dependency:tree -Dverbose -Dincludes=: Maven安装第三方Jar包到本地仓库:maven-install-pl">
 
 
 <meta itemprop="datePublished" content="2020-08-26T11:11:36&#43;08:00" />
-<meta itemprop="dateModified" content="2020-09-03T17:38:00&#43;08:00" />
-<meta itemprop="wordCount" content="318">
+<meta itemprop="dateModified" content="2020-09-03T17:41:43&#43;08:00" />
+<meta itemprop="wordCount" content="313">
 
 
 
@@ -125,7 +125,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-08-26 </span>
         
-          <span class="more-meta"> 约 318 字 </span>
+          <span class="more-meta"> 约 313 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/blog/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -207,22 +207,13 @@ mvn deploy(可选）
 mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=internal,remote -DarchetypeRepository=<a href="https://repo.rdc.aliyun.com/repository/28238-snapshot-KOJx4y">https://repo.rdc.aliyun.com/repository/28238-snapshot-KOJx4y</a> -DarchetypeGroupId=com.yunli.sca -DarchetypeArtifactId=sca-portal-archetype -DarchetypeVersion=1.0.0-SNAPSHOT -DgroupId=com.yunli -DartifactId=new-demo -Dversion=1.0.0-SNAPSHOT -Dgoals=compilemvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=internal,remote -DarchetypeRepository=<a href="https://repo.rdc.aliyun.com/repository/28238-snapshot-KOJx4y">https://repo.rdc.aliyun.com/repository/28238-snapshot-KOJx4y</a> -DarchetypeGroupId=com.yunli.sca -DarchetypeArtifactId=sca-portal-archetype -DarchetypeVersion=1.0.0-SNAPSHOT -DgroupId=com.yunli -DartifactId=new-demo -Dversion=1.0.0-SNAPSHOT -Dgoals=compile</p>
 
 <h4 id="生成骨架命令">生成骨架命令</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=api-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-service-api -Dversion=1.0.0-SNAPSHOT
 
-mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=portal-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-portal -Dversion=1.0.0-SNAPSHOT
+<p>mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=<a href="https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA">https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA</a> -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=api-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-service-api -Dversion=1.0.0-SNAPSHOT</p>
 
-mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=service-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-service -Dversion=1.0.0-SNAPSHOT</pre></td></tr></table>
-</div>
-</div>
+<p>mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=<a href="https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA">https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA</a> -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=portal-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-portal -Dversion=1.0.0-SNAPSHOT</p>
+
+<p>mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -DarchetypeRepository=<a href="https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA">https://repo.rdc.aliyun.com/repository/28238-release-F3OKjA</a> -DarchetypeGroupId=com.yunli.smart.archetype -DarchetypeArtifactId=service-spring-cloud-alibaba-archetype -DarchetypeVersion=2.1.1.RELEASE -DgroupId=com.yunli.smart -DartifactId=work-order-service -Dversion=1.0.0-SNAPSHOT</p>
+
     </div>
 
     <div class="post-copyright">
@@ -234,7 +225,7 @@ mvn archetype:generate -DinteractiveMode=false -DarchetypeCatalog=remote -Darche
     <span class="item-title">上次更新</span>
     <span class="item-content">
         2020-09-03
-        <a href="https://github.com/tryIdea/try/commit/a364566123c53d4f7737797d055394dd21cdfb43" title="mvn">(a364566)</a>
+        <a href="https://github.com/tryIdea/try/commit/c8ad05439a937319ce36f9e8a927dd1010adc0c9" title="mvn">(c8ad054)</a>
     </span>
   </p>
   
